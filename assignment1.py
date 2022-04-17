@@ -27,19 +27,23 @@ def main():
             user_input = get_input()
             user_input = check_input(user_input)
         elif user_input == MENU_CHOICES[1]:
-            book_title = input("Title: ").title()
-            book_title = not_blank(book_title)
-            book_author = input("Author: ").title()
-            book_author = not_blank(book_author)
-            book_page = page_check()
-            book_list.append([book_title, book_author, book_page, REQUIRED])
-            print(f"{book_title} by {book_author}, ({book_page} pages) added to Reading Tracker")
-            print(book_list)
+            add_new_book(book_list)
             print_menu()
             user_input = get_input()
             user_input = check_input(user_input)
 
     book_data.close()  # close books.csv
+
+
+def add_new_book(book_list):
+    """Add new book sub program"""
+    book_title = input("Title: ").title()
+    book_title = not_blank(book_title)
+    book_author = input("Author: ").title()
+    book_author = not_blank(book_author)
+    book_page = page_check()
+    book_list.append([book_title, book_author, book_page, REQUIRED])
+    print(f"{book_title} by {book_author}, ({book_page} pages) added to Reading Tracker")
 
 
 def page_check():
