@@ -3,7 +3,11 @@ Name: Joshua Timothy Gratio Wibowo
 Date started: 17/4/2022
 Description: Program to track user books that are required ro be read and books
              they have completed.
-GitHub URL: https://github.com/JCUS-CP1404/assignment-1-JoshuaWibowo
+GitHub URL: original :https://github.com/JCUS-CP1404/assignment-1-JoshuaWibowo
+            link with all the commit: https://github.com/JoshuaWibowo/assigment1
+
+        I'm sorry because I rushed my assignment and forgot to clone the file from the repo,
+        and i can't push my new code, so I just created a new git repo
 """
 
 MENU_CHOICES = ("L", "A", "M", "Q")
