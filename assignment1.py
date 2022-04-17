@@ -31,6 +31,8 @@ def main():
             print_menu()
             user_input = get_input()
             user_input = check_input(user_input)
+        elif user_input == MENU_CHOICES[2]:
+            list_all_books(book_list)
 
     book_data.close()  # close books.csv
 
