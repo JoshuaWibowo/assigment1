@@ -22,7 +22,8 @@ def main():
     user_input = check_input(user_input)
     while user_input != MENU_CHOICES[3]:  # while loop with "Q" as exit condition
         if user_input == MENU_CHOICES[0]:  # if user input "L"
-            list_all_books(book_list)
+            required_book = list_all_books(book_list)
+            print_all_books(book_list, required_book)
             print_menu()
             user_input = get_input()
             user_input = check_input(user_input)
@@ -32,9 +33,42 @@ def main():
             user_input = get_input()
             user_input = check_input(user_input)
         elif user_input == MENU_CHOICES[2]:
-            list_all_books(book_list)
+            required_book = list_all_books(book_list)
+            if len(required_book) > 0:
+                print_all_books(book_list, required_book)
+                print("Enter the number of a book to mark as completed")
+                book_number = book_number_check(book_list)
+                if book_list[book_number] in required_book:
+                    required_book.remove(book_list[book_number])
+                    book_list[book_number][3] = COMPLETED
+                    print(f"{book_list[book_number][0]} by {book_list[book_number][1]} completed!")
+                else:
+                    print("That book is already completed")
+            else:
+                print("No required books")
+            print_menu()
+            user_input = get_input()
+            user_input = check_input(user_input)
 
     book_data.close()  # close books.csv
+
+
+def book_number_check(book_list):
+    """Check if the page input is valid"""
+    while True:
+        book_num = input(">>> ")
+        try:
+            book_num = int(book_num)
+            while int(book_num) <= 0:
+                print("Number must be > 0")
+                book_num = input(">>> ")
+            while int(book_num) > len(book_list):
+                print("Invalid book number")
+                book_num = input(">>> ")
+            break
+        except ValueError:
+            print("Invalid input; enter a valid number")
+    return int(book_num) - 1
 
 
 def add_new_book(book_list):
@@ -74,7 +108,7 @@ def not_blank(user_input):
 def list_all_books(book_list):
     """List all books sub program"""
     required_book = check_required(book_list)
-    print_all_books(book_list, required_book)
+    return required_book
 
 
 def print_all_books(book_list, required_book):
@@ -89,7 +123,10 @@ def print_all_books(book_list, required_book):
     for book in required_book:
         total_required_page += int(book[2])
         total_required_book += 1
-    print(f"You need to read {total_required_page} pages in {total_required_book} books.")
+    if len(required_book) == 0:
+        print("No books left to read. Why not add a new book?")
+    else:
+        print(f"You need to read {total_required_page} pages in {total_required_book} books.")
 
 
 def check_required(book_list):
