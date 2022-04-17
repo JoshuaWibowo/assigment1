@@ -33,24 +33,33 @@ def main():
             user_input = get_input()
             user_input = check_input(user_input)
         elif user_input == MENU_CHOICES[2]:
-            required_book = list_all_books(book_list)
-            if len(required_book) > 0:
-                print_all_books(book_list, required_book)
-                print("Enter the number of a book to mark as completed")
-                book_number = book_number_check(book_list)
-                if book_list[book_number] in required_book:
-                    required_book.remove(book_list[book_number])
-                    book_list[book_number][3] = COMPLETED
-                    print(f"{book_list[book_number][0]} by {book_list[book_number][1]} completed!")
-                else:
-                    print("That book is already completed")
-            else:
-                print("No required books")
+            mark_book(book_list)
             print_menu()
             user_input = get_input()
             user_input = check_input(user_input)
 
     book_data.close()  # close books.csv
+
+
+def mark_book(book_list):
+    """Mark book sub program"""
+    required_book = list_all_books(book_list)
+    if len(required_book) > 0:
+        print_all_books(book_list, required_book)
+        print("Enter the number of a book to mark as completed")
+        book_number = book_number_check(book_list)
+        check_if_completed(book_list, book_number, required_book)
+    else:
+        print("No required books")
+
+
+def check_if_completed(book_list, book_number, required_book):
+    if book_list[book_number] in required_book:
+        required_book.remove(book_list[book_number])
+        book_list[book_number][3] = COMPLETED
+        print(f"{book_list[book_number][0]} by {book_list[book_number][1]} completed!")
+    else:
+        print("That book is already completed")
 
 
 def book_number_check(book_list):
