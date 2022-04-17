@@ -9,17 +9,17 @@ MENU_CHOICES = ("L", "A", "M", "Q")
 
 def main():
     """Main function"""
-    book_data = open("books.csv", "r")  # open books.csv
+    book_data = open("books.csv", "r+")  # open books.csv
     book_list = store_to_list(book_data)
     print("Reading Tracker 1.0 - by Joshua Wibowo")
     print_total_book(book_list)
     print_menu()
     user_input = get_input()
     user_input = check_input(user_input)
-    while user_input != MENU_CHOICES[3]:
+    while user_input != MENU_CHOICES[3]:  # while loop with "Q" as exit condition
         print("test")
 
-    book_data.close()
+    book_data.close()  # close books.csv
 
 
 def store_to_list(book_data):
