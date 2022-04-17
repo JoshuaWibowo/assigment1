@@ -28,7 +28,7 @@ def main():
             user_input = get_input()
             user_input = check_input(user_input)
         elif user_input == MENU_CHOICES[1]:
-            add_new_book(book_list)
+            book_list = add_new_book(book_list)
             print_menu()
             user_input = get_input()
             user_input = check_input(user_input)
@@ -107,7 +107,9 @@ def add_new_book(book_list):
     book_author = not_blank(book_author)
     book_page = page_check()
     book_list.append([book_title, book_author, book_page, REQUIRED])
+    book_list = sorted(book_list, key=lambda x: (x[1], x[0]))
     print(f"{book_title} by {book_author}, ({book_page} pages) added to Reading Tracker")
+    return book_list
 
 
 def page_check():
@@ -172,6 +174,7 @@ def store_to_list(book_data):
     book_list = []
     for i in range(len(books)):
         book_list.append(books[i].split(","))
+    book_list = sorted(book_list, key=lambda x: (x[1], x[0]))
     return book_list
 
 
