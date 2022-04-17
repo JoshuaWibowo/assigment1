@@ -4,6 +4,8 @@ Date started: 17/4/2022
 GitHub URL: https://github.com/JCUS-CP1404/assignment-1-JoshuaWibowo
 """
 
+MENU_CHOICES = ("L", "A", "M", "Q")
+
 
 def main():
     """Main function"""
@@ -16,7 +18,12 @@ def main():
 
 
 def print_menu():
-    print("Menu:\nL - List all books\nA - Add new book\nM - Mark a book as completed\nQ - Quit")
+    """Print menu"""
+    print("Menu:"
+          f"{MENU_CHOICES[0]} - List all books"
+          f"{MENU_CHOICES[1]} - Add new book"
+          f"{MENU_CHOICES[2]} - Mark a book as completed"
+          f"{MENU_CHOICES[3]} - Quit")
 
 
 def print_total_book(book_data):
