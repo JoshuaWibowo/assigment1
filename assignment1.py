@@ -1,6 +1,8 @@
 """
 Name: Joshua Timothy Gratio Wibowo
 Date started: 17/4/2022
+Description: Program to track user books tat are required ro be readed and books
+             they have completed.
 GitHub URL: https://github.com/JCUS-CP1404/assignment-1-JoshuaWibowo
 """
 
