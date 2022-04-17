@@ -1,7 +1,7 @@
 """
 Name: Joshua Timothy Gratio Wibowo
 Date started: 17/4/2022
-Description: Program to track user books tat are required ro be readed and books
+Description: Program to track user books that are required ro be read and books
              they have completed.
 GitHub URL: https://github.com/JCUS-CP1404/assignment-1-JoshuaWibowo
 """
@@ -19,7 +19,7 @@ def main():
     print_total_book(book_list)
     print_menu()
     user_input = get_input()
-    user_input = check_input(user_input)
+    user_input = check_input(user_input)  # error checking
     while user_input != MENU_CHOICES[3]:  # while loop with "Q" as exit condition
         if user_input == MENU_CHOICES[0]:  # if user input "L"
             required_book = list_all_books(book_list)
@@ -27,12 +27,12 @@ def main():
             print_menu()
             user_input = get_input()
             user_input = check_input(user_input)
-        elif user_input == MENU_CHOICES[1]:
+        elif user_input == MENU_CHOICES[1]:  # if user input "A"
             book_list = add_new_book(book_list)
             print_menu()
             user_input = get_input()
             user_input = check_input(user_input)
-        elif user_input == MENU_CHOICES[2]:
+        elif user_input == MENU_CHOICES[2]:  # if user input "M"
             book_list = mark_book(book_list)
             print_menu()
             user_input = get_input()
