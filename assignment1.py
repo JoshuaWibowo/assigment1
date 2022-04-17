@@ -15,13 +15,15 @@ def main():
     print_menu()
     user_input = get_input()
     user_input = check_input(user_input)
+    while user_input != MENU_CHOICES[3]:
+        print("test")
 
     book_data.close()
 
 
 def check_input(u_input):
     """Check if input is valid"""
-    if u_input not in MENU_CHOICES:
+    while u_input not in MENU_CHOICES:
         print("Invalid choice")
         print_menu()
         u_input = get_input()
