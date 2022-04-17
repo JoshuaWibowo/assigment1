@@ -31,12 +31,28 @@ def main():
             book_title = not_blank(book_title)
             book_author = input("Author: ").title()
             book_author = not_blank(book_author)
-
+            book_page = page_check()
+            print(f"{book_title} by {book_author}, ({book_page} pages) added to Reading Tracker")
             print_menu()
             user_input = get_input()
             user_input = check_input(user_input)
 
     book_data.close()  # close books.csv
+
+
+def page_check():
+    """Check if the page input is valid"""
+    while True:
+        book_page = input("Pages: ")
+        try:
+            book_page = int(book_page)
+            while int(book_page) <= 0:
+                print("Number must be > 0")
+                book_page = input("Pages: ")
+            break
+        except ValueError:
+            print("Invalid input; enter a valid number")
+    return book_page
 
 
 def not_blank(user_input):
