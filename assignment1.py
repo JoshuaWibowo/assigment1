@@ -7,6 +7,8 @@ GitHub URL: https://github.com/JCUS-CP1404/assignment-1-JoshuaWibowo
 """
 
 MENU_CHOICES = ("L", "A", "M", "Q")
+COMPLETED = "c"
+REQUIRED = "r"
 
 
 def main():
@@ -19,9 +21,27 @@ def main():
     user_input = get_input()
     user_input = check_input(user_input)
     while user_input != MENU_CHOICES[3]:  # while loop with "Q" as exit condition
-        print("test")
+        if user_input == MENU_CHOICES[0]:  # if user input "L"
+            list_all_books(book_list)
+            print_menu()
+            user_input = get_input()
+            user_input = check_input(user_input)
 
     book_data.close()  # close books.csv
+
+
+def list_all_books(book_list):
+    """List all books sub program"""
+    required_book = check_required(book_list)
+
+
+def check_required(book_list):
+    """Check if book is required"""
+    required_book = []
+    for book in book_list:
+        if book[3] == REQUIRED:  # check if it is "c" or "r"
+            required_book.append(book)  # if it is required, add to required list
+    return required_book
 
 
 def store_to_list(book_data):
