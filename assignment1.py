@@ -13,8 +13,16 @@ def main():
     print("Reading Tracker 1.0 - by Joshua Wibowo")
     print_total_book(book_data)
     print_menu()
+    user_input = get_input()
 
     book_data.close()
+
+
+def get_input():
+    """Get user input"""
+    user_input = input(">>> ")
+    user_input = user_input.lower()
+    return user_input
 
 
 def print_menu():
