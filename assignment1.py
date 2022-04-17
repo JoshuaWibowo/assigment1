@@ -28,7 +28,7 @@ def main():
             user_input = get_input()
             user_input = check_input(user_input)
         elif user_input == MENU_CHOICES[1]:  # if user input "A"
-            book_list = add_new_book(book_list)
+            add_new_book(book_list)
             print_menu()
             user_input = get_input()
             user_input = check_input(user_input)
@@ -107,9 +107,7 @@ def add_new_book(book_list):
     book_author = not_blank(book_author)
     book_page = page_check()
     book_list.append([book_title, book_author, book_page, REQUIRED])
-    book_list = sorted(book_list, key=lambda x: (x[1], x[0]))
     print(f"{book_title} by {book_author}, ({book_page} pages) added to Reading Tracker")
-    return book_list
 
 
 def page_check():
@@ -141,15 +139,19 @@ def list_all_books(book_list):
     return required_book
 
 
-def print_all_books(book_list, required_book):
+def print_all_books(sorted_book_list, required_book):
     """Print all the books and its data"""
+    sorted_book_list = sorted_book_list.copy()
+    sorted_book_list = sorted(sorted_book_list, key=lambda x: (x[1], x[0]))
     total_required_page = 0
     total_required_book = 0
-    for book in range(len(book_list)):
-        if book_list[book] in required_book:
-            print(f"*{book + 1}. {book_list[book][0]:<38} by {book_list[book][1]:<17} {book_list[book][2]:>3} pages")
+    for book in range(len(sorted_book_list)):
+        if sorted_book_list[book] in required_book:
+            print(f"*{book + 1}. {sorted_book_list[book][0]:<38} by {sorted_book_list[book][1]:<17} "
+                  f"{sorted_book_list[book][2]:>3} pages")
         else:
-            print(f"{book + 1:>2}. {book_list[book][0]:<38} by {book_list[book][1]:<17} {book_list[book][2]:>3} pages")
+            print(f"{book + 1:>2}. {sorted_book_list[book][0]:<38} by {sorted_book_list[book][1]:<17} "
+                  f"{sorted_book_list[book][2]:>3} pages")
     for book in required_book:
         total_required_page += int(book[2])
         total_required_book += 1
@@ -174,7 +176,6 @@ def store_to_list(book_data):
     book_list = []
     for i in range(len(books)):
         book_list.append(books[i].split(","))
-    book_list = sorted(book_list, key=lambda x: (x[1], x[0]))
     return book_list
 
 
