@@ -37,6 +37,15 @@ def main():
             print_menu()
             user_input = get_input()
             user_input = check_input(user_input)
+    overwrite_data(book_data, book_list)
+    print(f"{len(book_list)} books saved to books.csv")
+    print("So many books, so little time. Frank Zappa")
+
+    book_data.close()  # close books.csv
+
+
+def overwrite_data(book_data, book_list):
+    """Overwrite old data with new data"""
     book_data.seek(0)
     for book in range(len(book_list)):
         for item in range(len(book_list[book])):
@@ -46,13 +55,7 @@ def main():
                 book_data.write(f"{book_list[book][item]},")
         if book != len(book_list) - 1:
             book_data.write("\n")
-
     book_data.truncate()
-    # print(book_list, file=book_data)
-    print(f"{len(book_list)} books saved to books.csv")
-    print("So many books, so little time. Frank Zappa")
-
-    book_data.close()  # close books.csv
 
 
 def mark_book(book_list):
