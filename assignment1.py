@@ -37,6 +37,8 @@ def main():
             print_menu()
             user_input = get_input()
             user_input = check_input(user_input)
+    print(f"{len(book_list)} books saved to books.csv")
+    print("So many books, so little time. Frank Zappa")
 
     book_data.close()  # close books.csv
 
