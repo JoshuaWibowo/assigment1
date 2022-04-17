@@ -14,8 +14,8 @@ See https://trello.com/c/6H24THnj/21-wakatime-time-tracking-for-ides-join-our-le
 
 
 1. How long did the entire project (assignment 1) take you?
-> answer...
+> about 7 hours and 20 minutes
 
 
 2. What do you plan to do  differently in your development process for assignment 2?
-> answer...
+> i really want to start early and learn from my mistakes, such as not cloning the original repository and stuff. I'm really sorry.
