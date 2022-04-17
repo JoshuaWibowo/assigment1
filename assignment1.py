@@ -7,10 +7,16 @@ GitHub URL: https://github.com/JCUS-CP1404/assignment-1-JoshuaWibowo
 
 def main():
     """Main function"""
-    book_data = open("books.csv", "a")
+    book_data = open("books.csv", "r")  # open books.csv
     print("Reading Tracker 1.0 - by Joshua Wibowo")
+    print_total_book(book_data)
 
     book_data.close()
+
+
+def print_total_book(book_data):
+    """Print total book in the data"""
+    print(f"{len(book_data.readlines())} books loaded")
 
 
 if __name__ == '__main__':
