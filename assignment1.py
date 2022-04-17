@@ -27,12 +27,24 @@ def main():
             user_input = get_input()
             user_input = check_input(user_input)
         elif user_input == MENU_CHOICES[1]:
-            print("test")
+            book_title = input("Title: ").title()
+            book_title = not_blank(book_title)
+            book_author = input("Author: ").title()
+            book_author = not_blank(book_author)
+
             print_menu()
             user_input = get_input()
             user_input = check_input(user_input)
 
     book_data.close()  # close books.csv
+
+
+def not_blank(user_input):
+    """Check if an input is blank or not"""
+    while user_input == "" or user_input.isspace():
+        print("Input can not be blank")
+        user_input = input("Title: ").title()
+    return user_input
 
 
 def list_all_books(book_list):
