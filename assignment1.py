@@ -101,9 +101,9 @@ def book_number_check(book_list):
 
 def add_new_book(book_list):
     """Add new book sub program"""
-    book_title = input("Title: ").title()
+    book_title = input("Title: ")
     book_title = not_blank(book_title)
-    book_author = input("Author: ").title()
+    book_author = input("Author: ")
     book_author = not_blank(book_author)
     book_page = page_check()
     book_list.append([book_title, book_author, book_page, REQUIRED])
@@ -131,7 +131,7 @@ def not_blank(user_input):
     """Check if an input is blank or not"""
     while user_input == "" or user_input.isspace():
         print("Input can not be blank")
-        user_input = input("Title: ").title()
+        user_input = input("Title: ")
     return user_input
 
 
