@@ -33,6 +33,22 @@ def main():
 def list_all_books(book_list):
     """List all books sub program"""
     required_book = check_required(book_list)
+    print_all_books(book_list, required_book)
+
+
+def print_all_books(book_list, required_book):
+    """Print all the books and its data"""
+    total_required_page = 0
+    total_required_book = 0
+    for book in range(len(book_list)):
+        if book_list[book] in required_book:
+            print(f"*{book + 1}. {book_list[book][0]:<38} by {book_list[book][1]:<17} {book_list[book][2]:>3} pages")
+        else:
+            print(f"{book + 1:>2}. {book_list[book][0]:<38} by {book_list[book][1]:<17} {book_list[book][2]:>3} pages")
+    for book in required_book:
+        total_required_page += int(book[2])
+        total_required_book += 1
+    print(f"You need to read {total_required_page} pages in {total_required_book} books.")
 
 
 def check_required(book_list):
