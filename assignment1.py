@@ -33,10 +33,22 @@ def main():
             user_input = get_input()
             user_input = check_input(user_input)
         elif user_input == MENU_CHOICES[2]:
-            mark_book(book_list)
+            book_list = mark_book(book_list)
             print_menu()
             user_input = get_input()
             user_input = check_input(user_input)
+    book_data.seek(0)
+    for book in range(len(book_list)):
+        for item in range(len(book_list[book])):
+            if item == len(book_list[book]) - 1:
+                book_data.write(f"{book_list[book][item]}")
+            else:
+                book_data.write(f"{book_list[book][item]},")
+        if book != len(book_list) - 1:
+            book_data.write("\n")
+
+    book_data.truncate()
+    # print(book_list, file=book_data)
     print(f"{len(book_list)} books saved to books.csv")
     print("So many books, so little time. Frank Zappa")
 
@@ -50,9 +62,10 @@ def mark_book(book_list):
         print_all_books(book_list, required_book)
         print("Enter the number of a book to mark as completed")
         book_number = book_number_check(book_list)
-        check_if_completed(book_list, book_number, required_book)
+        book_list = check_if_completed(book_list, book_number, required_book)
     else:
         print("No required books")
+    return book_list
 
 
 def check_if_completed(book_list, book_number, required_book):
@@ -62,6 +75,7 @@ def check_if_completed(book_list, book_number, required_book):
         print(f"{book_list[book_number][0]} by {book_list[book_number][1]} completed!")
     else:
         print("That book is already completed")
+    return book_list
 
 
 def book_number_check(book_list):
