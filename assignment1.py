@@ -10,8 +10,13 @@ def main():
     book_data = open("books.csv", "r")  # open books.csv
     print("Reading Tracker 1.0 - by Joshua Wibowo")
     print_total_book(book_data)
+    print_menu()
 
     book_data.close()
+
+
+def print_menu():
+    print("Menu:\nL - List all books\nA - Add new book\nM - Mark a book as completed\nQ - Quit")
 
 
 def print_total_book(book_data):
